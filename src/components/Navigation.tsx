@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logoImg from "@/assets/logo.png";
+import logoImg from "@/assets/logoo.png";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -67,11 +67,7 @@ const Navigation = () => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-8">
               {navItems.map((item, index) => (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className="relative group"
-                >
+                <Link key={item.path} to={item.path} className="relative group">
                   <motion.span
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -126,7 +122,7 @@ const Navigation = () => {
               <X size={24} />
             </button>
           </div>
-          
+
           <div className="flex-1 overflow-y-auto py-6">
             {navItems.map((item, index) => (
               <Link

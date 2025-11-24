@@ -1,12 +1,23 @@
 import { motion } from "framer-motion";
 import { User } from "lucide-react";
+import ketuaImg from "@/assets/pengurus/ketua.png";
+import wakilImg from "@/assets/pengurus/ketua.png";
+import sekretarisImg from "@/assets/pengurus/ketua.png";
+import bendaharaImg from "@/assets/pengurus/ketua.png";
 
 const Kepengurusan = () => {
+  // const leadership = [
+  //   { position: "Ketua", name: "Ahmad Rizki Pratama" },
+  //   { position: "Wakil Ketua", name: "Siti Nurhaliza" },
+  //   { position: "Sekretaris", name: "Budi Santoso" },
+  //   { position: "Bendahara", name: "Dewi Lestari" },
+  // ];
+
   const leadership = [
-    { position: "Ketua", name: "Ahmad Rizki Pratama" },
-    { position: "Wakil Ketua", name: "Siti Nurhaliza" },
-    { position: "Sekretaris", name: "Budi Santoso" },
-    { position: "Bendahara", name: "Dewi Lestari" },
+    { position: "Ketua", name: "Ahmad Rizki Pratama", photo: ketuaImg },
+    { position: "Wakil Ketua", name: "Siti Nurhaliza", photo: wakilImg },
+    { position: "Sekretaris", name: "Budi Santoso", photo: sekretarisImg },
+    { position: "Bendahara", name: "Dewi Lestari", photo: bendaharaImg },
   ];
 
   const divisions = [
@@ -92,7 +103,9 @@ const Kepengurusan = () => {
             <h2 className="font-lexend text-4xl font-bold mb-4">
               <span className="text-elegant-gold">Pimpinan Inti</span>
               <br />
-              <span className="text-foreground text-2xl mt-2 block">Core Leadership</span>
+              <span className="text-foreground text-2xl mt-2 block">
+                Core Leadership
+              </span>
             </h2>
           </motion.div>
 
@@ -107,16 +120,19 @@ const Kepengurusan = () => {
                 whileHover={{ y: -10 }}
                 className="bg-elegant-surface rounded-2xl overflow-hidden shadow-elegant hover:shadow-gold transition-all duration-300 border border-elegant-gold/20"
               >
-                <div className="aspect-square bg-gradient-to-br from-elegant-gold/20 to-elegant-surface flex items-center justify-center">
-                  <User className="h-24 w-24 text-elegant-gold" />
+                {/* ganti foto */}
+                <div className="aspect-square overflow-hidden">
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="p-6 text-center">
                   <h3 className="font-lexend text-xl font-bold text-elegant-gold mb-2">
                     {member.position}
                   </h3>
-                  <p className="font-poppins text-foreground">
-                    {member.name}
-                  </p>
+                  <p className="font-poppins text-foreground">{member.name}</p>
                 </div>
               </motion.div>
             ))}
@@ -137,7 +153,9 @@ const Kepengurusan = () => {
             <h2 className="font-lexend text-4xl font-bold mb-4">
               <span className="text-elegant-gold">Bidang-Bidang</span>
               <br />
-              <span className="text-foreground text-2xl mt-2 block">Divisions</span>
+              <span className="text-foreground text-2xl mt-2 block">
+                Divisions
+              </span>
             </h2>
           </motion.div>
 
@@ -185,7 +203,7 @@ const Kepengurusan = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-elegant-dark">
+      {/* <section className="py-24 bg-elegant-dark">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -198,11 +216,15 @@ const Kepengurusan = () => {
               Tertarik Bergabung?
             </h2>
             <p className="font-poppins text-elegant-subtext text-lg mb-8">
-              Kami selalu terbuka untuk anggota baru yang bersemangat dan berkomitmen
+              Kami selalu terbuka untuk anggota baru yang bersemangat dan
+              berkomitmen
             </p>
             <motion.a
               href="/kontak"
-              whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(200, 168, 89, 0.5)" }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 40px rgba(200, 168, 89, 0.5)",
+              }}
               whileTap={{ scale: 0.95 }}
               className="inline-block px-10 py-4 bg-gradient-to-r from-elegant-gold-dark via-elegant-gold to-elegant-gold-light text-elegant-dark font-semibold rounded-lg transition-all duration-300"
             >
@@ -210,7 +232,7 @@ const Kepengurusan = () => {
             </motion.a>
           </motion.div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

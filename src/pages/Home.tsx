@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Users, Target, Award, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImg from "@/assets/hero-home.jpg";
+import heroImg from "@/assets/back-home.png";
 
 const Home = () => {
   const stats = [
@@ -74,7 +74,10 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/profil">
                 <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(200, 168, 89, 0.5)" }}
+                  whileHover={{
+                    scale: 1.05,
+                    boxShadow: "0 0 40px rgba(200, 168, 89, 0.5)",
+                  }}
                   whileTap={{ scale: 0.95 }}
                   className="px-8 py-4 bg-gradient-to-r from-elegant-gold-dark via-elegant-gold to-elegant-gold-light text-elegant-dark font-semibold rounded-lg transition-all duration-300 flex items-center gap-2 mx-auto sm:mx-0"
                 >
@@ -136,7 +139,13 @@ const Home = () => {
             className="max-w-4xl mx-auto bg-elegant-surface p-8 md:p-12 rounded-2xl border border-elegant-gold/20 shadow-elegant"
           >
             <p className="font-poppins text-elegant-subtext text-lg leading-relaxed text-center">
-              Karang Taruna RW 06 Manggarai adalah organisasi kepemudaan yang bergerak di wilayah RW 06, Kelurahan Manggarai, Kecamatan Tebet, Jakarta Selatan. Kami hadir sebagai wadah bagi generasi muda untuk mengembangkan potensi, berkreasi, dan berkontribusi positif bagi lingkungan. Dengan semangat gotong royong dan inovasi, kami menjalankan berbagai program sosial, pendidikan, olahraga, dan pengembangan kewirausahaan yang memberdayakan masyarakat sekitar.
+              Karang Taruna RW 06 Manggarai adalah organisasi kepemudaan yang
+              bergerak di wilayah RW 06, Kelurahan Manggarai, Kecamatan Tebet,
+              Jakarta Selatan. Kami hadir sebagai wadah bagi generasi muda untuk
+              mengembangkan potensi, berkreasi, dan berkontribusi positif bagi
+              lingkungan. Dengan semangat gotong royong dan inovasi, kami
+              menjalankan berbagai program sosial, pendidikan, olahraga, dan
+              pengembangan kewirausahaan yang memberdayakan masyarakat sekitar.
             </p>
           </motion.div>
         </div>
@@ -174,7 +183,10 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10, boxShadow: "0 0 40px rgba(200, 168, 89, 0.4)" }}
+                whileHover={{
+                  y: -10,
+                  boxShadow: "0 0 40px rgba(200, 168, 89, 0.4)",
+                }}
                 className="bg-elegant-surface p-8 rounded-2xl border border-elegant-gold shadow-elegant hover:shadow-gold transition-all duration-500"
               >
                 <div className="mb-6">
@@ -218,17 +230,20 @@ const Home = () => {
               {
                 icon: Target,
                 title: "Pemberdayaan Pemuda",
-                description: "Program pelatihan dan workshop untuk mengembangkan keterampilan dan potensi generasi muda di RW 06.",
+                description:
+                  "Program pelatihan dan workshop untuk mengembangkan keterampilan dan potensi generasi muda di RW 06.",
               },
               {
                 icon: Award,
                 title: "Kegiatan Sosial",
-                description: "Aksi sosial rutin seperti donor darah, santunan, dan bakti sosial untuk membantu sesama warga.",
+                description:
+                  "Aksi sosial rutin seperti donor darah, santunan, dan bakti sosial untuk membantu sesama warga.",
               },
               {
                 icon: Calendar,
                 title: "Olahraga & Seni",
-                description: "Turnamen olahraga dan festival seni budaya untuk memperkuat kebersamaan dan kreativitas.",
+                description:
+                  "Turnamen olahraga dan festival seni budaya untuk memperkuat kebersamaan dan kreativitas.",
               },
             ].map((program, index) => (
               <motion.div
@@ -237,7 +252,10 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.15 }}
-                whileHover={{ y: -10, boxShadow: "0 0 40px rgba(200, 168, 89, 0.4)" }}
+                whileHover={{
+                  y: -10,
+                  boxShadow: "0 0 40px rgba(200, 168, 89, 0.4)",
+                }}
                 className="bg-elegant-surface p-8 rounded-2xl border border-elegant-gold shadow-elegant hover:shadow-gold transition-all duration-500"
               >
                 <div className="mb-6">
@@ -257,7 +275,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Stats Section
       <section className="py-24 bg-elegant-dark relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-gradient-to-r from-elegant-gold/20 to-transparent" />
@@ -287,8 +305,7 @@ const Home = () => {
             ))}
           </div>
         </div>
-      </section>
-
+      </section> */}
     </div>
   );
 };

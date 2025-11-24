@@ -1,7 +1,14 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter, Mail, MapPin, Phone } from "lucide-react";
-import logoImg from "@/assets/logo.png";
+import {
+  Facebook,
+  Instagram,
+  Twitter,
+  Mail,
+  MapPin,
+  Phone,
+} from "lucide-react";
+import logoImg from "@/assets/logoo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -41,7 +48,11 @@ const Footer = () => {
             className="space-y-4"
           >
             <div className="flex items-center gap-3 mb-4">
-              <img src={logoImg} alt="Logo" className="h-16 w-16 object-contain" />
+              <img
+                src={logoImg}
+                alt="Logo"
+                className="h-16 w-16 object-contain"
+              />
               <div>
                 <h3 className="font-lexend text-lg font-bold text-elegant-gold">
                   Karang Taruna
@@ -125,7 +136,9 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-elegant-gold flex-shrink-0 mt-0.5" />
                 <span className="font-poppins text-sm text-elegant-subtext">
-                  RW 06 Manggarai, Tebet<br />Jakarta Selatan 12850
+                  RW 06 Manggarai, Tebet
+                  <br />
+                  Jakarta Selatan 12850
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -173,7 +186,8 @@ const Footer = () => {
             © {currentYear} Karang Taruna RW 06 Manggarai. All rights reserved.
           </p>
           <p className="font-poppins text-xs text-elegant-subtext mt-2">
-            Made with <span className="text-elegant-gold">❤</span> for the community
+            Made with <span className="text-elegant-gold">❤</span> for the
+            community
           </p>
         </motion.div>
       </div>

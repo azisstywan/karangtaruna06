@@ -184,7 +184,7 @@ const Galeri = () => {
                 {/* Image Placeholder */}
                 <div className="aspect-[4/3] bg-gradient-to-br from-elegant-gold/20 to-elegant-surface flex items-center justify-center relative overflow-hidden">
                   <ImageIcon className="h-20 w-20 text-elegant-gold/30" />
-                  
+
                   {/* Overlay on Hover */}
                   <div className="absolute inset-0 bg-elegant-dark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <motion.div
@@ -193,7 +193,9 @@ const Galeri = () => {
                       className="text-center"
                     >
                       <Camera className="h-12 w-12 text-elegant-gold mx-auto mb-2" />
-                      <p className="font-poppins text-elegant-gold text-sm">View Details</p>
+                      <p className="font-poppins text-elegant-gold text-sm">
+                        View Details
+                      </p>
                     </motion.div>
                   </div>
                 </div>
@@ -256,12 +258,16 @@ const Galeri = () => {
               Dokumentasi Kegiatan
             </h3>
             <p className="font-poppins text-elegant-subtext">
-              Foto-foto kegiatan kami tersedia lengkap di Instagram @karangtaruna.rw06
+              Foto-foto kegiatan kami tersedia lengkap di Instagram
+              @karangtaruna.rw06
               <br />
               Follow untuk update dokumentasi terbaru!
             </p>
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(200, 168, 89, 0.5)" }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 40px rgba(200, 168, 89, 0.5)",
+              }}
               whileTap={{ scale: 0.95 }}
               className="mt-6 px-8 py-3 bg-gradient-to-r from-elegant-gold-dark via-elegant-gold to-elegant-gold-light text-elegant-dark font-semibold rounded-lg transition-all duration-300"
             >
@@ -318,11 +324,11 @@ const Galeri = () => {
                         {selectedImage.date}
                       </span>
                     </div>
-                    
+
                     <h2 className="font-lexend text-3xl md:text-4xl font-bold text-foreground mb-4">
                       {selectedImage.title}
                     </h2>
-                    
+
                     <div className="border-t border-elegant-gold/20 pt-4">
                       <p className="font-poppins text-elegant-subtext text-lg leading-relaxed">
                         {selectedImage.description}
