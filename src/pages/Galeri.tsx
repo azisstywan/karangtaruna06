@@ -1,9 +1,10 @@
-import { motion } from "framer-motion";
-import { Camera, Image as ImageIcon } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Camera, Image as ImageIcon, X, Calendar } from "lucide-react";
 import { useState } from "react";
 
 const Galeri = () => {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedImage, setSelectedImage] = useState<any>(null);
 
   const categories = [
     { id: "all", name: "Semua" },
@@ -205,9 +206,17 @@ const Galeri = () => {
                   <h3 className="font-lexend text-xl font-bold text-foreground mb-2">
                     {item.title}
                   </h3>
-                  <p className="font-poppins text-elegant-subtext text-sm">
+                  <p className="font-poppins text-elegant-subtext text-sm mb-4">
                     {item.description}
                   </p>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setSelectedImage(item)}
+                    className="w-full px-4 py-2 bg-elegant-gold/10 border border-elegant-gold text-elegant-gold font-poppins font-medium rounded-lg hover:bg-elegant-gold hover:text-elegant-dark transition-all duration-300"
+                  >
+                    Selengkapnya
+                  </motion.button>
                 </div>
               </motion.div>
             ))}
@@ -261,6 +270,71 @@ const Galeri = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Modal Detail Gambar */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 bg-black/95 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring", duration: 0.6 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-5xl"
+            >
+              <div className="relative">
+                {/* Close Button */}
+                <motion.button
+                  whileHover={{ scale: 1.1, rotate: 90 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => setSelectedImage(null)}
+                  className="absolute -top-12 right-0 text-elegant-gold hover:text-elegant-gold-light transition-colors z-10"
+                >
+                  <X className="h-8 w-8" />
+                </motion.button>
+
+                {/* Image Container */}
+                <div className="bg-elegant-darker border-2 border-elegant-gold rounded-2xl shadow-gold overflow-hidden">
+                  {/* Large Image Placeholder */}
+                  <div className="aspect-video bg-gradient-to-br from-elegant-gold/20 to-elegant-surface flex items-center justify-center relative">
+                    <ImageIcon className="h-32 w-32 text-elegant-gold/40" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Camera className="h-20 w-20 text-elegant-gold/60" />
+                    </div>
+                  </div>
+
+                  {/* Info Section */}
+                  <div className="p-8 bg-elegant-darker">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Calendar className="h-5 w-5 text-elegant-gold" />
+                      <span className="font-poppins text-elegant-gold">
+                        {selectedImage.date}
+                      </span>
+                    </div>
+                    
+                    <h2 className="font-lexend text-3xl md:text-4xl font-bold text-foreground mb-4">
+                      {selectedImage.title}
+                    </h2>
+                    
+                    <div className="border-t border-elegant-gold/20 pt-4">
+                      <p className="font-poppins text-elegant-subtext text-lg leading-relaxed">
+                        {selectedImage.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

@@ -4,29 +4,6 @@ import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-home.jpg";
 
 const Home = () => {
-  const features = [
-    {
-      icon: Users,
-      title: "Komunitas Solid",
-      description: "Membangun kebersamaan dan solidaritas antar pemuda",
-    },
-    {
-      icon: Target,
-      title: "Program Terarah",
-      description: "Kegiatan yang terstruktur dan berdampak positif",
-    },
-    {
-      icon: Award,
-      title: "Prestasi Gemilang",
-      description: "Berbagai pencapaian di tingkat kelurahan dan kota",
-    },
-    {
-      icon: Calendar,
-      title: "Kegiatan Rutin",
-      description: "Agenda terorganisir sepanjang tahun",
-    },
-  ];
-
   const stats = [
     { number: "100+", label: "Anggota Aktif" },
     { number: "50+", label: "Program Terlaksana" },
@@ -135,7 +112,89 @@ const Home = () => {
         </motion.div>
       </section>
 
-      {/* Features Section */}
+      {/* Profile Section */}
+      <section className="py-24 bg-elegant-darker">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="font-lexend text-4xl md:text-5xl font-bold mb-4">
+              <span className="text-elegant-gold">Profil Singkat</span>
+              <span className="text-foreground"> • Brief Profile</span>
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto bg-elegant-surface p-8 md:p-12 rounded-2xl border border-elegant-gold/20 shadow-elegant"
+          >
+            <p className="font-poppins text-elegant-subtext text-lg leading-relaxed text-center">
+              Karang Taruna RW 06 Manggarai adalah organisasi kepemudaan yang bergerak di wilayah RW 06, Kelurahan Manggarai, Kecamatan Tebet, Jakarta Selatan. Kami hadir sebagai wadah bagi generasi muda untuk mengembangkan potensi, berkreasi, dan berkontribusi positif bagi lingkungan. Dengan semangat gotong royong dan inovasi, kami menjalankan berbagai program sosial, pendidikan, olahraga, dan pengembangan kewirausahaan yang memberdayakan masyarakat sekitar.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Core Leadership Section */}
+      <section className="py-24 bg-elegant-dark">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="font-lexend text-4xl md:text-5xl font-bold mb-4">
+              <span className="text-elegant-gold">Kepengurusan Inti</span>
+              <span className="text-foreground"> • Core Leadership</span>
+            </h2>
+            <p className="font-poppins text-elegant-subtext text-lg max-w-2xl mx-auto">
+              Pengurus inti yang memimpin organisasi kami
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            {[
+              { position: "Ketua", name: "TBA" },
+              { position: "Wakil Ketua", name: "TBA" },
+              { position: "Sekretaris", name: "TBA" },
+              { position: "Bendahara", name: "TBA" },
+            ].map((leader, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -10, boxShadow: "0 0 40px rgba(200, 168, 89, 0.4)" }}
+                className="bg-elegant-surface p-8 rounded-2xl border border-elegant-gold shadow-elegant hover:shadow-gold transition-all duration-500"
+              >
+                <div className="mb-6">
+                  <div className="w-24 h-24 mx-auto bg-elegant-gold/10 rounded-full flex items-center justify-center border-2 border-elegant-gold">
+                    <Users className="h-12 w-12 text-elegant-gold" />
+                  </div>
+                </div>
+                <h3 className="font-lexend text-xl font-bold text-elegant-gold mb-2 text-center">
+                  {leader.position}
+                </h3>
+                <p className="font-poppins text-elegant-subtext text-center">
+                  {leader.name}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Programs Section */}
       <section className="py-24 bg-elegant-darker">
         <div className="container mx-auto px-6">
           <motion.div
@@ -146,35 +205,51 @@ const Home = () => {
             className="text-center mb-16"
           >
             <h2 className="font-lexend text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-elegant-gold">Why Join Us</span>
-              <span className="text-foreground"> • Mengapa Bergabung</span>
+              <span className="text-elegant-gold">Program Unggulan</span>
+              <span className="text-foreground"> • Featured Programs</span>
             </h2>
             <p className="font-poppins text-elegant-subtext text-lg max-w-2xl mx-auto">
-              Bersama membangun masa depan yang lebih cerah
+              Tiga program kerja utama kami untuk masyarakat
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                icon: Target,
+                title: "Pemberdayaan Pemuda",
+                description: "Program pelatihan dan workshop untuk mengembangkan keterampilan dan potensi generasi muda di RW 06.",
+              },
+              {
+                icon: Award,
+                title: "Kegiatan Sosial",
+                description: "Aksi sosial rutin seperti donor darah, santunan, dan bakti sosial untuk membantu sesama warga.",
+              },
+              {
+                icon: Calendar,
+                title: "Olahraga & Seni",
+                description: "Turnamen olahraga dan festival seni budaya untuk memperkuat kebersamaan dan kreativitas.",
+              },
+            ].map((program, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="bg-elegant-surface p-8 rounded-xl shadow-elegant hover:shadow-gold transition-all duration-300 border border-elegant-gold/20"
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                whileHover={{ y: -10, boxShadow: "0 0 40px rgba(200, 168, 89, 0.4)" }}
+                className="bg-elegant-surface p-8 rounded-2xl border border-elegant-gold shadow-elegant hover:shadow-gold transition-all duration-500"
               >
                 <div className="mb-6">
-                  <div className="inline-flex p-4 bg-elegant-gold/10 rounded-lg">
-                    <feature.icon className="h-8 w-8 text-elegant-gold" />
+                  <div className="inline-flex p-4 bg-elegant-gold/10 rounded-xl border border-elegant-gold/30">
+                    <program.icon className="h-10 w-10 text-elegant-gold" />
                   </div>
                 </div>
-                <h3 className="font-lexend text-xl font-semibold text-foreground mb-3">
-                  {feature.title}
+                <h3 className="font-lexend text-2xl font-bold text-foreground mb-4">
+                  {program.title}
                 </h3>
-                <p className="font-poppins text-elegant-subtext">
-                  {feature.description}
+                <p className="font-poppins text-elegant-subtext leading-relaxed">
+                  {program.description}
                 </p>
               </motion.div>
             ))}
@@ -214,34 +289,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-elegant-darker">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-gradient-to-r from-elegant-gold-dark via-elegant-gold to-elegant-gold-light p-12 md:p-16 rounded-2xl text-center shadow-gold"
-          >
-            <h2 className="font-lexend text-3xl md:text-4xl font-bold text-elegant-dark mb-4">
-              Mari Bergabung Bersama Kami
-            </h2>
-            <p className="font-poppins text-elegant-dark/80 text-lg mb-8 max-w-2xl mx-auto">
-              Jadilah bagian dari perubahan positif di lingkungan kita
-            </p>
-            <Link to="/kontak">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-10 py-4 bg-elegant-dark text-elegant-gold font-semibold rounded-lg hover:bg-elegant-darker transition-all duration-300"
-              >
-                Daftar Sekarang
-              </motion.button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
     </div>
   );
 };

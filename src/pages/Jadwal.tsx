@@ -1,7 +1,10 @@
-import { motion } from "framer-motion";
-import { Calendar, Clock, MapPin } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Calendar, Clock, MapPin, X, User } from "lucide-react";
+import { useState } from "react";
 
 const Jadwal = () => {
+  const [selectedEvent, setSelectedEvent] = useState<any>(null);
+
   const schedules = [
     {
       month: "Januari 2025",
@@ -12,6 +15,8 @@ const Jadwal = () => {
           title: "Rapat Koordinasi Awal Tahun",
           location: "Balai RW 06",
           type: "meeting",
+          pic: "Budi Santoso",
+          description: "Rapat koordinasi untuk membahas program kerja tahun 2025, evaluasi tahun sebelumnya, dan penetapan target organisasi. Harap semua pengurus hadir tepat waktu.",
         },
         {
           date: "12 Jan",
@@ -19,6 +24,8 @@ const Jadwal = () => {
           title: "Senam Pagi Bersama",
           location: "Lapangan Manggarai",
           type: "sport",
+          pic: "Siti Nurhaliza",
+          description: "Kegiatan senam pagi rutin untuk meningkatkan kesehatan dan kebersamaan warga. Terbuka untuk semua usia. Instruktur senam berpengalaman akan memandu.",
         },
         {
           date: "20 Jan",
@@ -26,6 +33,8 @@ const Jadwal = () => {
           title: "Workshop Digital Marketing",
           location: "Ruang Serbaguna",
           type: "training",
+          pic: "Ahmad Ridwan",
+          description: "Pelatihan digital marketing gratis untuk pelaku UMKM dan pemuda yang ingin belajar pemasaran online. Materi mencakup social media marketing, content creation, dan strategi branding.",
         },
       ],
     },
@@ -38,6 +47,8 @@ const Jadwal = () => {
           title: "Donor Darah Rutin",
           location: "Balai RW 06",
           type: "social",
+          pic: "Dr. Fitria",
+          description: "Kegiatan donor darah bekerjasama dengan PMI Jakarta Selatan. Syarat donor: sehat, usia 17-60 tahun, berat badan minimal 45kg. Dapatkan sertifikat dan snack gratis.",
         },
         {
           date: "14 Feb",
@@ -45,6 +56,8 @@ const Jadwal = () => {
           title: "Perayaan Hari Kasih Sayang",
           location: "Taman RW 06",
           type: "celebration",
+          pic: "Dewi Lestari",
+          description: "Perayaan Valentine Day dengan berbagai games seru, doorprize menarik, dan penampilan musik akustik. Acara keluarga yang fun dan menghibur.",
         },
         {
           date: "25 Feb",
@@ -52,6 +65,8 @@ const Jadwal = () => {
           title: "Pelatihan Fotografi",
           location: "Ruang Serbaguna",
           type: "training",
+          pic: "Rudi Hartono",
+          description: "Workshop fotografi basic untuk pemula. Belajar teknik komposisi, lighting, dan editing foto. Peserta wajib membawa kamera/smartphone. Kuota terbatas 30 orang.",
         },
       ],
     },
@@ -64,6 +79,8 @@ const Jadwal = () => {
           title: "Peringatan Hari Perempuan",
           location: "Balai RW 06",
           type: "celebration",
+          pic: "Ratna Sari",
+          description: "Acara peringatan Hari Perempuan Internasional dengan talkshow inspiratif, demo memasak, dan doorprize. Menghargai peran perempuan dalam membangun keluarga dan masyarakat.",
         },
         {
           date: "15 Mar",
@@ -71,6 +88,8 @@ const Jadwal = () => {
           title: "Turnamen Futsal",
           location: "Lapangan Manggarai",
           type: "sport",
+          pic: "Eko Prasetyo",
+          description: "Turnamen futsal antar RW se-Kelurahan Manggarai. Pendaftaran dibuka untuk tim putra usia 17-35 tahun. Hadiah total 5 juta rupiah untuk juara 1, 2, dan 3.",
         },
         {
           date: "22 Mar",
@@ -78,6 +97,8 @@ const Jadwal = () => {
           title: "Bazar UMKM Warga",
           location: "Halaman Balai RW",
           type: "business",
+          pic: "Joko Susilo",
+          description: "Bazar UMKM untuk memberdayakan usaha warga. Gratis untuk pedagang warga RW 06. Berbagai produk kuliner, fashion, dan kerajinan tersedia dengan harga terjangkau.",
         },
       ],
     },
@@ -198,7 +219,7 @@ const Jadwal = () => {
                           <h3 className="font-lexend text-xl font-bold text-foreground mb-2">
                             {event.title}
                           </h3>
-                          <div className="flex flex-col sm:flex-row gap-4 text-elegant-subtext">
+                          <div className="flex flex-col sm:flex-row gap-4 text-elegant-subtext mb-4">
                             <div className="flex items-center gap-2">
                               <Clock className="h-4 w-4 text-elegant-gold" />
                               <span className="font-poppins text-sm">{event.time}</span>
@@ -208,6 +229,14 @@ const Jadwal = () => {
                               <span className="font-poppins text-sm">{event.location}</span>
                             </div>
                           </div>
+                          <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setSelectedEvent(event)}
+                            className="px-6 py-2 bg-elegant-gold/10 border border-elegant-gold text-elegant-gold font-poppins font-medium rounded-lg hover:bg-elegant-gold hover:text-elegant-dark transition-all duration-300"
+                          >
+                            Selengkapnya
+                          </motion.button>
                         </div>
                       </div>
                     </motion.div>
@@ -266,42 +295,73 @@ const Jadwal = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-elegant-dark">
-        <div className="container mx-auto px-6">
+      {/* Modal Detail */}
+      <AnimatePresence>
+        {selectedEvent && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedEvent(null)}
+            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
           >
-            <h2 className="font-lexend text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Jangan Lewatkan Kegiatan Kami
-            </h2>
-            <p className="font-poppins text-elegant-subtext text-lg mb-8">
-              Follow media sosial kami untuk update jadwal terbaru dan reminder kegiatan
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(200, 168, 89, 0.5)" }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-elegant-gold-dark via-elegant-gold to-elegant-gold-light text-elegant-dark font-semibold rounded-lg transition-all duration-300"
-              >
-                Follow Instagram
-              </motion.button>
-              <motion.a
-                href="/pengumuman"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-transparent border-2 border-elegant-gold text-elegant-gold font-semibold rounded-lg hover:bg-elegant-gold/10 transition-all duration-300 inline-block"
-              >
-                Lihat Pengumuman
-              </motion.a>
-            </div>
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", duration: 0.5 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-elegant-darker border border-elegant-gold rounded-2xl shadow-gold max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            >
+              <div className="p-8">
+                <div className="flex justify-between items-start mb-6">
+                  <h2 className="font-lexend text-3xl font-bold text-elegant-gold pr-8">
+                    {selectedEvent.title}
+                  </h2>
+                  <motion.button
+                    whileHover={{ scale: 1.1, rotate: 90 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => setSelectedEvent(null)}
+                    className="text-elegant-gold hover:text-elegant-gold-light transition-colors"
+                  >
+                    <X className="h-6 w-6" />
+                  </motion.button>
+                </div>
+
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-center gap-3 text-foreground">
+                    <Calendar className="h-5 w-5 text-elegant-gold" />
+                    <span className="font-poppins">{selectedEvent.date}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-foreground">
+                    <Clock className="h-5 w-5 text-elegant-gold" />
+                    <span className="font-poppins">{selectedEvent.time}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-foreground">
+                    <MapPin className="h-5 w-5 text-elegant-gold" />
+                    <span className="font-poppins">{selectedEvent.location}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-foreground">
+                    <User className="h-5 w-5 text-elegant-gold" />
+                    <span className="font-poppins">
+                      Penanggung Jawab: {selectedEvent.pic}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="border-t border-elegant-gold/20 pt-6">
+                  <h3 className="font-lexend text-lg font-semibold text-elegant-gold mb-3">
+                    Deskripsi Lengkap
+                  </h3>
+                  <p className="font-poppins text-elegant-subtext leading-relaxed">
+                    {selectedEvent.description}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
-        </div>
-      </section>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
