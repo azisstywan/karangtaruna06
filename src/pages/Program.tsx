@@ -1,12 +1,20 @@
 import { motion } from "framer-motion";
-import { BookOpen, Heart, Trophy, Lightbulb, Users, Calendar } from "lucide-react";
+import {
+  BookOpen,
+  Heart,
+  Trophy,
+  Lightbulb,
+  Users,
+  Calendar,
+} from "lucide-react";
 
 const Program = () => {
   const programs = [
     {
       icon: BookOpen,
       title: "Pendidikan & Pelatihan",
-      description: "Program pengembangan keterampilan dan pengetahuan untuk pemuda",
+      description:
+        "Program pengembangan keterampilan dan pengetahuan untuk pemuda",
       items: [
         "Pelatihan komputer dan digital marketing",
         "Kursus bahasa Inggris gratis",
@@ -28,7 +36,8 @@ const Program = () => {
     {
       icon: Trophy,
       title: "Olahraga & Kompetisi",
-      description: "Kegiatan olahraga dan turnamen untuk membangun jiwa sportif",
+      description:
+        "Kegiatan olahraga dan turnamen untuk membangun jiwa sportif",
       items: [
         "Turnamen futsal antar RW",
         "Senam pagi setiap minggu",
@@ -112,7 +121,8 @@ const Program = () => {
               </span>
             </h1>
             <p className="font-poppins text-elegant-subtext text-lg max-w-3xl mx-auto">
-              Berbagai kegiatan yang dirancang untuk memberdayakan dan mengembangkan potensi pemuda
+              Berbagai kegiatan yang dirancang untuk memberdayakan dan
+              mengembangkan potensi pemuda
             </p>
           </motion.div>
         </div>
@@ -161,7 +171,7 @@ const Program = () => {
       </section>
 
       {/* Impact Section */}
-      <section className="py-24 bg-elegant-darker">
+      {/* <section className="py-24 bg-elegant-darker">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -236,10 +246,10 @@ const Program = () => {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Section */}
-      <section className="py-24 bg-elegant-dark">
+      {/* <section className="py-24 bg-elegant-dark">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -264,7 +274,7 @@ const Program = () => {
             </motion.a>
           </motion.div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };

@@ -14,7 +14,7 @@ const Kepengurusan = () => {
   // ];
 
   const leadership = [
-    { position: "Ketua", name: "Ahmad Rizki Pratama", photo: ketuaImg },
+    { position: "Ketua", name: "Muhamad Ari", photo: ketuaImg },
     { position: "Wakil Ketua", name: "Siti Nurhaliza", photo: wakilImg },
     { position: "Sekretaris", name: "Budi Santoso", photo: sekretarisImg },
     { position: "Bendahara", name: "Dewi Lestari", photo: bendaharaImg },

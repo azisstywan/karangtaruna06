@@ -1,5 +1,13 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Facebook, Instagram, Twitter, Send } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Facebook,
+  Instagram,
+  Twitter,
+  Send,
+} from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -15,7 +23,8 @@ const Kontak = () => {
     {
       icon: MapPin,
       title: "Alamat • Address",
-      content: "RW 06 Manggarai, Kelurahan Manggarai\nKecamatan Tebet, Jakarta Selatan 12850",
+      content:
+        "RW 06 Manggarai, Kelurahan Manggarai\nKecamatan Tebet, Jakarta Selatan 12850",
     },
     {
       icon: Phone,
@@ -30,18 +39,46 @@ const Kontak = () => {
   ];
 
   const socialMedia = [
-    { icon: Facebook, name: "Facebook", link: "#", color: "hover:text-blue-500" },
-    { icon: Instagram, name: "Instagram", link: "#", color: "hover:text-pink-500" },
+    {
+      icon: Facebook,
+      name: "Facebook",
+      link: "#",
+      color: "hover:text-blue-500",
+    },
+    {
+      icon: Instagram,
+      name: "Instagram",
+      link: "#",
+      color: "hover:text-pink-500",
+    },
     { icon: Twitter, name: "Twitter", link: "#", color: "hover:text-sky-500" },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Pesan berhasil dikirim! Kami akan segera menghubungi Anda.");
+
+    const adminNumber = "6281388301675"; // ganti dengan nomor admin (format tanpa +)
+
+    const text = `Halo, saya *${formData.name}*.
+Email: ${formData.email}
+Subjek: ${formData.subject}
+
+Pesan:
+${formData.message}`;
+
+    const waURL = `https://wa.me/${adminNumber}?text=${encodeURIComponent(
+      text
+    )}`;
+
+    window.open(waURL, "_blank");
+
+    toast.success("Mengalihkan ke WhatsApp...");
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -86,7 +123,8 @@ const Kontak = () => {
               </span>
             </h1>
             <p className="font-poppins text-elegant-subtext text-lg max-w-3xl mx-auto">
-              Punya pertanyaan atau ingin bergabung? Jangan ragu untuk menghubungi kami
+              Punya pertanyaan atau ingin bergabung? Jangan ragu untuk
+              menghubungi kami
             </p>
           </motion.div>
         </div>
@@ -202,7 +240,10 @@ const Kontak = () => {
 
                 <motion.button
                   type="submit"
-                  whileHover={{ scale: 1.02, boxShadow: "0 0 40px rgba(200, 168, 89, 0.5)" }}
+                  whileHover={{
+                    scale: 1.02,
+                    boxShadow: "0 0 40px rgba(200, 168, 89, 0.5)",
+                  }}
                   whileTap={{ scale: 0.98 }}
                   className="w-full px-8 py-4 bg-gradient-to-r from-elegant-gold-dark via-elegant-gold to-elegant-gold-light text-elegant-dark font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
                 >
@@ -222,17 +263,15 @@ const Kontak = () => {
             >
               {/* Map Placeholder */}
               <div className="bg-elegant-surface rounded-2xl overflow-hidden border border-elegant-gold/20">
-                <div className="aspect-video bg-gradient-to-br from-elegant-gold/20 to-elegant-surface flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="h-16 w-16 text-elegant-gold mx-auto mb-4" />
-                    <p className="font-poppins text-elegant-subtext">
-                      Lokasi Sekretariat
-                    </p>
-                    <p className="font-poppins text-sm text-elegant-subtext mt-2">
-                      RW 06 Manggarai, Tebet<br />Jakarta Selatan
-                    </p>
-                  </div>
-                </div>
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d499.6317597315376!2d106.84797305234756!3d-6.212388732802404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1763996430628!5m2!1sid!2sid"
+                  width="600"
+                  height="450"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
 
               {/* Social Media */}
@@ -272,11 +311,15 @@ const Kontak = () => {
                 <div className="space-y-3 font-poppins text-elegant-subtext">
                   <div className="flex justify-between">
                     <span>Senin - Jumat</span>
-                    <span className="text-foreground font-semibold">18:00 - 21:00</span>
+                    <span className="text-foreground font-semibold">
+                      18:00 - 21:00
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span>Sabtu</span>
-                    <span className="text-foreground font-semibold">16:00 - 20:00</span>
+                    <span className="text-foreground font-semibold">
+                      16:00 - 20:00
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span>Minggu</span>

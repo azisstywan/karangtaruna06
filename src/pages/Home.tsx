@@ -2,6 +2,10 @@ import { motion } from "framer-motion";
 import { ArrowRight, Users, Target, Award, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImg from "@/assets/back-home.png";
+import ketuaImg from "@/assets/pengurus/ketua.png";
+import wakilImg from "@/assets/pengurus/ketua.png";
+import sekretarisImg from "@/assets/pengurus/ketua.png";
+import bendaharaImg from "@/assets/pengurus/ketua.png";
 
 const Home = () => {
   const stats = [
@@ -172,10 +176,26 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {[
-              { position: "Ketua", name: "TBA" },
-              { position: "Wakil Ketua", name: "TBA" },
-              { position: "Sekretaris", name: "TBA" },
-              { position: "Bendahara", name: "TBA" },
+              {
+                position: "Ketua",
+                name: "Ahmad Rizki Pratama",
+                photo: ketuaImg,
+              },
+              {
+                position: "Wakil Ketua",
+                name: "Siti Nurhaliza",
+                photo: wakilImg,
+              },
+              {
+                position: "Sekretaris",
+                name: "Budi Santoso",
+                photo: sekretarisImg,
+              },
+              {
+                position: "Bendahara",
+                name: "Dewi Lestari",
+                photo: bendaharaImg,
+              },
             ].map((leader, index) => (
               <motion.div
                 key={index}
@@ -190,8 +210,12 @@ const Home = () => {
                 className="bg-elegant-surface p-8 rounded-2xl border border-elegant-gold shadow-elegant hover:shadow-gold transition-all duration-500"
               >
                 <div className="mb-6">
-                  <div className="w-24 h-24 mx-auto bg-elegant-gold/10 rounded-full flex items-center justify-center border-2 border-elegant-gold">
-                    <Users className="h-12 w-12 text-elegant-gold" />
+                  <div className="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-elegant-gold">
+                    <img
+                      src={leader.photo}
+                      alt={leader.name}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                 </div>
                 <h3 className="font-lexend text-xl font-bold text-elegant-gold mb-2 text-center">
