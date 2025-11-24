@@ -7,38 +7,80 @@ All colors MUST be HSL.
 */
 
 @layer base {
+  @layer base {
+    .dark {
+      --background: 0 0% 100%;
+      --foreground: 0 0% 5%;
+
+      --card: 0 0% 90%;
+      --card-foreground: 0 0% 5%;
+
+      --popover: 0 0% 90%;
+      --popover-foreground: 0 0% 5%;
+
+      --primary: 43 48% 40%;
+      --primary-foreground: 0 0% 100%;
+
+      --secondary: 0 0% 85%;
+      --secondary-foreground: 0 0% 5%;
+
+      --muted: 0 0% 75%;
+      --muted-foreground: 0 0% 20%;
+
+      --accent: 43 48% 45%;
+      --accent-foreground: 0 0% 100%;
+
+      --destructive: 0 70% 40%;
+      --destructive-foreground: 0 0% 100%;
+
+      --border: 0 0% 75%;
+      --input: 0 0% 80%;
+      --ring: 43 48% 45%;
+
+      /* Elegant Theme Light Mode */
+      --elegant-dark: 0 0% 90%;
+      --elegant-darker: 0 0% 96%;
+      --elegant-gold: 43 48% 40%;
+      --elegant-gold-light: 43 58% 50%;
+      --elegant-gold-dark: 43 38% 35%;
+      --elegant-text: 0 0% 5%;
+      --elegant-subtext: 0 0% 40%;
+      --elegant-surface: 0 0% 95%;
+    }
+  }
+
   :root {
     /* Elegant Dark Gold Theme */
     --background: 0 0% 5%;
     --foreground: 0 0% 100%;
-    
+
     --card: 0 0% 10%;
     --card-foreground: 0 0% 100%;
-    
+
     --popover: 0 0% 10%;
     --popover-foreground: 0 0% 100%;
-    
+
     --primary: 43 48% 57%;
     --primary-foreground: 0 0% 5%;
-    
+
     --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 100%;
-    
+
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 53%;
-    
+
     --accent: 43 48% 57%;
     --accent-foreground: 0 0% 5%;
-    
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
-    
+
     --border: 0 0% 20%;
     --input: 0 0% 20%;
     --ring: 43 48% 57%;
-    
+
     --radius: 0.75rem;
-    
+
     /* Custom elegant colors */
     --elegant-dark: 0 0% 5%;
     --elegant-darker: 0 0% 8%;
@@ -48,16 +90,24 @@ All colors MUST be HSL.
     --elegant-text: 0 0% 100%;
     --elegant-subtext: 0 0% 53%;
     --elegant-surface: 0 0% 10%;
-    
+
     /* Gradients */
-    --gradient-gold: linear-gradient(135deg, hsl(43, 48%, 57%) 0%, hsl(43, 58%, 67%) 100%);
-    --gradient-dark: linear-gradient(180deg, hsl(0, 0%, 5%) 0%, hsl(0, 0%, 8%) 100%);
-    
+    --gradient-gold: linear-gradient(
+      135deg,
+      hsl(43, 48%, 57%) 0%,
+      hsl(43, 58%, 67%) 100%
+    );
+    --gradient-dark: linear-gradient(
+      180deg,
+      hsl(0, 0%, 5%) 0%,
+      hsl(0, 0%, 8%) 100%
+    );
+
     /* Shadows */
     --shadow-elegant: 0 10px 40px -10px hsla(0, 0%, 0%, 0.5);
     --shadow-gold: 0 0 30px hsla(43, 48%, 57%, 0.3);
     --shadow-gold-hover: 0 0 40px hsla(43, 48%, 57%, 0.5);
-    
+
     /* Transitions */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -71,27 +121,27 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Lexend', 'Poppins', sans-serif;
+    font-family: "Lexend", "Poppins", sans-serif;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
-  
+
   /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 10px;
   }
-  
+
   ::-webkit-scrollbar-track {
     background: hsl(var(--elegant-dark));
   }
-  
+
   ::-webkit-scrollbar-thumb {
     background: hsl(var(--elegant-gold));
     border-radius: 5px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--elegant-gold-light));
   }
@@ -101,31 +151,31 @@ All colors MUST be HSL.
   .text-elegant-gold {
     color: hsl(var(--elegant-gold));
   }
-  
+
   .bg-elegant-dark {
     background-color: hsl(var(--elegant-dark));
   }
-  
+
   .bg-elegant-surface {
     background-color: hsl(var(--elegant-surface));
   }
-  
+
   .border-elegant-gold {
     border-color: hsl(var(--elegant-gold));
   }
-  
+
   .shadow-elegant {
     box-shadow: var(--shadow-elegant);
   }
-  
+
   .shadow-gold {
     box-shadow: var(--shadow-gold);
   }
-  
+
   .transition-smooth {
     transition: var(--transition-smooth);
   }
-  
+
   .gradient-gold {
     background: var(--gradient-gold);
   }

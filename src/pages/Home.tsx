@@ -23,7 +23,7 @@ const Home = () => {
         <motion.div
           initial={{ scale: 1.1 }}
           animate={{ scale: 1 }}
-          transition={{ duration: 1.5 }}
+          transition={{ duration: 0.18 }}
           className="absolute inset-0"
         >
           <div
@@ -202,7 +202,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.1, delay: index * 0.1 }}
                 whileHover={{
                   y: -10,
                   boxShadow: "0 0 40px rgba(200, 168, 89, 0.4)",
@@ -275,7 +275,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
+                transition={{ duration: 0.1, delay: index * 0.15 }}
                 whileHover={{
                   y: -10,
                   boxShadow: "0 0 40px rgba(200, 168, 89, 0.4)",

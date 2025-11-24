@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logoImg from "@/assets/logoo.png";
+import ThemeToggle from "@/components/theme-toggle";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -90,6 +91,9 @@ const Navigation = () => {
                 </Link>
               ))}
             </div>
+
+            {/* Theme Toggle */}
+            <ThemeToggle />
 
             {/* Mobile Menu Button */}
             <button
